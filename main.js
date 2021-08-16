@@ -50,7 +50,7 @@ function loadPlayer(){
     updatePlayer();
 }
 
-function changeMusic (next = true){
+function changeMusic(next = true){
     if (next){
         current_song_index++;
         next_song_index = current_song_index + 1;
@@ -69,5 +69,15 @@ function changeMusic (next = true){
             }
         }
         updatePlayer()
+    }
+
+    function updatePlayer() {
+        let song = songs[current_song_index];
+
+        song_img.style = "background-image: url('" + song.img_path + "');";
+        song_title.innerText = song.title;
+        song_artist.innerText = song.artist;
+        song_next.innerText = songs[next_song_index].title + " by " + songs[next_song_index].artist;
+        audio_player.src = song.song_path;
     }
 }
